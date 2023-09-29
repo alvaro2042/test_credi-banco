@@ -39,9 +39,5 @@ pipeline {
                 sh 'docker push alvaro2042/app_credi-banco:latest'
             }
         }
-    }
-    
-    post {
-    }
+    }   
 }
-
