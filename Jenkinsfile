@@ -5,9 +5,17 @@ pipeline {
         stage('Clonar Repositorio') {
             steps {
                 script {
-              	    withCredentials([usernamePassword(credentialsId: 'Github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                	git url: "https://alvaro2042:${env.PASSWORD}@github.com/alvaro2042/app_credi-banco.git", branch: 'develop'
-
+                    withCredentials([string(credentialsId: 'Github', variable: 'GITHUB_TOKEN')]) {
+                	checkout([$class: 'GitSCM', 
+                    	    branches: [[name: '*/develop']],
+                    	    doGenerateSubmoduleConfigurations: false, 
+                            extensions: [[$class: 'CleanCheckout']], 
+                            submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                        	credentialsId: 'Github', 
+                        	url: "https://alvaro2042:${env.GITHUB_TOKEN}@github.com/alvaro2042/app_credi-banco.git"
+                    	    ]]
+                	])
             	    }
         	}
             }
