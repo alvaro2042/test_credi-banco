@@ -6,7 +6,8 @@ pipeline {
             steps {
                 script {
               	    withCredentials([usernamePassword(credentialsId: 'Github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                	git url: "https://${env.USERNAME}:${env.PASSWORD}@github.com/alvaro2042/app_credi-banco.git", branch: 'develop'
+                	git url: "https://alvaro2042:${env.PASSWORD}@github.com/alvaro2042/app_credi-banco.git", branch: 'develop'
+
             	    }
         	}
             }
