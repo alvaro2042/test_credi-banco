@@ -33,8 +33,7 @@ pipeline {
                 sh 'docker build -t alvaro2042/app_credi-banco:latest .'
                 
                 // login Docker Hub
-                sh 'echo dckr_pat_sIvPJ_rFBpwicBNIi8JTrEaF5ZQ | docker login --username alvaro2042 --password-stdin'
-                }
+                sh 'echo dckr_pat_sIvPJ_rFBpwicBNIi8JTrEaF5ZQ | docker login --username alvaro2042 --password-stdin' 
                 
                 // Subir la imagen a Docker Hub
                 sh 'docker push alvaro2042/app_credi-banco:latest'
