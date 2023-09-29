@@ -16,11 +16,13 @@ pipeline {
             }
         }
         
-        stage('Analizar Calidad del Código') {
+        stage('Analizar Calidad del Código en SonarCloud') {
             steps {
-                // Analizar la calidad del código con SonarQube
-                withSonarQubeEnv('http://localhost:9000') {
-                    sh 'sonar-scanner'
+                script {
+                    def scannerHome = tool 'SonarQube Scanner'
+                    withSonarQubeEnv('SonarCloud') {
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=bf36a1da232c8d349ad360db3426e731f6c84f20"
+                    }
                 }
             }
         }
