@@ -5,8 +5,7 @@ pipeline {
         stage('Clonar Repositorio') {
             steps {
 		script {
-		    withCredentials([string(credentialsId: 'GithubSecret', variable: 'GITHUB_TOKEN')]) {
-                	git url: "https://${env.GITHUB_TOKEN}@github.com/alvaro2042/app_credi-banco.git", branch: 'develop'
+		    git credentialsId: 'GithubSecret', url: 'https://github.com/alvaro2042/app_credi-banco.git', branch: 'develop'
             	    }
         	}
             }
