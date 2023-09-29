@@ -14,11 +14,11 @@ pipeline {
         stage('Ejecutar Pruebas Unitarias') {
             steps {
                 // Pruebas unitarias
-                sh 'python -m unittest discover tests'
+                sh 'python333 -m unittest discover tests'
             }
         }
         
-        stage('Analizar Calidad del Código en SonarCloud') {
+        stage('Analizar Calidad del Cidigo en SonarCloud') {
             steps {
                 script {
                     def scannerHome = tool 'SonarQube Scanner'
