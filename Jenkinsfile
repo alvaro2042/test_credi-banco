@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                // Clonar el repositorio de GitHub
-                git 'https://github.com/alvaro2042/app_credi-banco.git'
+                script {
+              	    withCredentials([string(credentialsId: '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', variable: 'GITHUB_TOKEN')]) {
+                	git url: "https://${env.GITHUB_TOKEN}@github.com/alvaro2042/app_credi-banco.git", branch: 'develop'
+            	    }
+        	}
             }
         }
         
