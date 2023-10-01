@@ -24,11 +24,12 @@ pipeline {
                     def scannerHome = tool 'SonarScanner'
                     withSonarQubeEnv('SonarCloud') {
                         sh """
-			${scannerHome}/bin/sonar-scanner/
-			-Dsonar.projectKey=sonar.ci_interface.htc.hmac_key
-			-Dsonar.organization=alvaro2042
-			-Dsonar.sources=.
-		 	-Dsonar.login=bf36a1da232c8d349ad360db3426e731f6c84f20"
+			${scannerHome}/bin/sonar-scanner \
+			-Dsonar.projectKey=sonar.ci_interface.htc.hmac_key \
+			-Dsonar.organization=alvaro2042 \
+			-Dsonar.sources=. \
+		 	-Dsonar.login=bf36a1da232c8d349ad360db3426e731f6c84f20
+			"""
                     }
                 }
             }
@@ -46,5 +47,5 @@ pipeline {
                 sh 'docker push alvaro2042/app_credi-banco:latest'
             }
         }
-    }   
+    }
 }
