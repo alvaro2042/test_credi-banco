@@ -1,11 +1,15 @@
 import unittest
-from app import custom_function
+from app import app
 
 class TestCustomFunctions(unittest.TestCase):
 
-    def test_custom_function(self):
-        result = custom_function(arg1, arg2)  # Llama a tu función personalizada con argumentos adecuados
-        self.assertEqual(result, expected_result)  # Verifica que el resultado sea el esperado
+    def setUp(self):
+        self.app = app.test_client()
+
+    def test_index_route(self):
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"Bienvenido a mi aplicación web en Python", response.data)
 
 if __name__ == '__main__':
     unittest.main()
