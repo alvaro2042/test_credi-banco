@@ -21,9 +21,14 @@ pipeline {
         stage('Analizar Calidad del Cidigo en SonarCloud') {
             steps {
                 script {
-                    def scannerHome = tool 'SonarQube Scanner'
+                    def scannerHome = tool 'SonarScanner'
                     withSonarQubeEnv('SonarCloud') {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=bf36a1da232c8d349ad360db3426e731f6c84f20"
+                        sh """
+			${scannerHome}/bin/sonar-scanner/
+			-Dsonar.projectKey=sonar.ci_interface.htc.hmac_key
+			-Dsonar.organization=alvaro2042
+			-Dsonar.sources=.
+		 	-Dsonar.login=bf36a1da232c8d349ad360db3426e731f6c84f20"
                     }
                 }
             }
