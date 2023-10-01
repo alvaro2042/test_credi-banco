@@ -12,7 +12,7 @@ pipeline {
         stage('Ejecutar Pruebas Unitarias') {
             steps {
                 // Pruebas unitarias
-                sh 'python -m unittest discover tests'
+                sh 'python -m unittest discover test'
             }
         }
         
