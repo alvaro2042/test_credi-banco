@@ -18,7 +18,7 @@ pipeline {
             }
         }
         
-        /*stage('Analizar Calidad del Cidigo en SonarCloud') {
+        stage('Analizar Calidad del Cidigo en SonarCloud') {
             steps {
                 script {
                     def scannerHome = tool 'SonarCloud'
@@ -33,7 +33,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        /
         
         stage('Construir y Subir Imagen Docker') {
             steps {
