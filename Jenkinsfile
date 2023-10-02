@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     def scannerHome = tool 'SonarCloud'
-                    withSonarQubeEnv() {
+                    withSonarCloudEnv('SonarCloud') {
                         sh """
 			${scannerHome}/bin/sonar-scanner \
 			-Dsonar.projectKey=sonar.ci_interface.htc.hmac_key \
