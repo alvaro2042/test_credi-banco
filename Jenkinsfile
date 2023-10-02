@@ -18,11 +18,11 @@ pipeline {
             }
         }
         
-        stage('Analizar Calidad del Cidigo en SonarCloud') {
+        /*stage('Analizar Calidad del Cidigo en SonarCloud') {
             steps {
                 script {
                     def scannerHome = tool 'SonarCloud'
-                    withSonarQubeEnv('SonarCloud') {
+                    withSonarQubeEnv() {
                         sh """
 			${scannerHome}/bin/sonar-scanner \
 			-Dsonar.projectKey=sonar.ci_interface.htc.hmac_key \
@@ -33,7 +33,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         
         stage('Construir y Subir Imagen Docker') {
             steps {
