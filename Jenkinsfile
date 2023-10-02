@@ -33,8 +33,7 @@ pipeline {
                     }
                 }
             }
-        /
-        
+        }
         stage('Construir y Subir Imagen Docker') {
             steps {
                 // Construccion imagen de Docker
