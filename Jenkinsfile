@@ -36,7 +36,14 @@ pipeline {
         }
         stage('Construir y Subir Imagen Docker') {
             steps {
-                // Construccion imagen de Docker
+		// Eliminar contenedor existente
+        	sh 'docker stop app-credibanco || true'
+        	sh 'docker rm -f app-credibanco || true'
+
+        	// Eliminar la imagen
+        	sh 'docker rmi -f alvaro2042/app_credi-banco:latest || true'
+                
+		// Construccion imagen de Docker
                 sh 'docker build -t alvaro2042/app_credi-banco:latest .'
                 
                 // login Docker Hub
@@ -44,6 +51,9 @@ pipeline {
                 
                 // Subir la imagen a Docker Hub
                 sh 'docker push alvaro2042/app_credi-banco:latest'
+		
+		// Lanzar el contenedor
+        	sh 'docker run -d --name app-credibanco -p 5000:5000 alvaro2042/app_credi-banco:latest'
             }
         }
     }
