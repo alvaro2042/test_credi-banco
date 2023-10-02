@@ -22,10 +22,10 @@ pipeline {
             steps {
                 script {
                     def scannerHome = tool 'SonarCloud'
-                    withSonarCloudEnv('SonarCloud') {
+                    withSonarQubeEnv('SonarCloud') {
                         sh """
 			${scannerHome}/bin/sonar-scanner \
-			-Dsonar.projectKey=sonar.ci_interface.htc.hmac_key \
+			-Dsonar.projectKey=alvaro2042_test_credi-banco\
 			-Dsonar.organization=alvaro2042 \
 			-Dsonar.sources=. \
 		 	-Dsonar.login=bf36a1da232c8d349ad360db3426e731f6c84f20
