@@ -21,7 +21,7 @@ pipeline {
         stage('Analizar Calidad del Cidigo en SonarCloud') {
             steps {
                 script {
-                    def scannerHome = tool 'SonarScanner'
+                    def scannerHome = tool 'SonarCloud'
                     withSonarQubeEnv('SonarCloud') {
                         sh """
 			${scannerHome}/bin/sonar-scanner \
