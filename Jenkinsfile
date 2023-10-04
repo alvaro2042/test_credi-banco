@@ -16,6 +16,11 @@ pipeline {
                 // Pruebas unitarias
                 sh 'python3 -m unittest discover test'
             }
+	    post {
+        	always {
+            	    junit '**/test-*.xml'
+        	}
+    	    }
         }
         
         stage('Analizar Calidad del Cidigo en SonarCloud') {
